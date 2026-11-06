@@ -5,6 +5,7 @@ A fixed-pixel office tower for **DeepSeek Harness (DSH)**: all of your sessions 
 > One tower = all workspaces · one floor = one workspace · one office on a floor = one session (one agent team)
 > **A lit floor means work in progress.**
 
+[![npm](https://img.shields.io/npm/v/dsh-pixel-office)](https://www.npmjs.com/package/dsh-pixel-office)
 [![license](https://img.shields.io/github/license/Thunderunruly/agent-office?color=blue)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/Thunderunruly/agent-office?style=flat)](https://github.com/Thunderunruly/agent-office)
 [![DSH](https://img.shields.io/badge/DSH-0.2.1--rc.3%2B-5B4CF0)](https://github.com/deepseek-ai/deepseek-harness)
@@ -36,8 +37,14 @@ English | [简体中文](README.zh-CN.md)
 
 Requires DSH **0.2.1-rc.3** or newer with the Web UI and plugin support.
 
-1. **From the DSH Plugin Market** (after the catalog listing is merged): Plugins → Discover, search **Pixel Office**, install, then refresh the window once.
-2. **From this repository** (source install):
+1. **From npm** (recommended):
+
+   ```sh
+   dsh plugin --profile desktop add dsh-pixel-office
+   ```
+
+2. **From the DSH Plugin Market** (after the catalog listing is merged): Plugins → Discover, search **Pixel Office**, install, then refresh the window once.
+3. **From this repository** (source install):
 
    ```sh
    git clone https://github.com/Thunderunruly/agent-office.git
@@ -49,7 +56,7 @@ Requires DSH **0.2.1-rc.3** or newer with the Web UI and plugin support.
    install_bundle <path-to-agent-office>
    ```
 
-3. **Local development folder**: the same `install_bundle <absolute path>` works on a checkout you edit; rebuild `client.js` with `node scripts/build.mjs` and refresh the window.
+4. **Local development folder**: the same `install_bundle <absolute path>` works on a checkout you edit; rebuild `client.js` with `node scripts/build.mjs` and refresh the window.
 
 After installation, refresh the DSH window once so the client bundle enters the boot graph. Later client changes hot-reload in place.
 

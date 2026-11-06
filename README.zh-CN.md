@@ -7,6 +7,7 @@
 
 [简体中文](README.zh-CN.md) | [English](README.md)
 
+[![npm](https://img.shields.io/npm/v/dsh-pixel-office)](https://www.npmjs.com/package/dsh-pixel-office)
 [![license](https://img.shields.io/github/license/Thunderunruly/agent-office?color=blue)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/Thunderunruly/agent-office?style=flat)](https://github.com/Thunderunruly/agent-office)
 [![DSH](https://img.shields.io/badge/DSH-0.2.1--rc.3%2B-5B4CF0)](https://github.com/deepseek-ai/deepseek-harness)
@@ -36,8 +37,14 @@
 
 需要 DSH **0.2.1-rc.3** 或更新版本（带 Web UI 与插件支持）。
 
-1. **从 DSH 插件市场安装**（目录收录合并后）：插件 → 发现（Discover）→ 搜索 **像素办公室 / Pixel Office** → 安装，然后刷新一次窗口。
-2. **从本仓库安装**（源码方式）：
+1. **从 npm 安装**（推荐）：
+
+   ```sh
+   dsh plugin --profile desktop add dsh-pixel-office
+   ```
+
+2. **从 DSH 插件市场安装**（目录收录合并后）：插件 → 发现（Discover）→ 搜索 **像素办公室 / Pixel Office** → 安装，然后刷新一次窗口。
+3. **从本仓库安装**（源码方式）：
 
    ```sh
    git clone https://github.com/Thunderunruly/agent-office.git
@@ -49,7 +56,7 @@
    install_bundle <path-to-agent-office>
    ```
 
-3. **本地开发目录**：同一套 `install_bundle <绝对路径>` 也适用于你正在改的 checkout；改完源码运行 `node scripts/build.mjs` 生成 `client.js`，刷新 DSH 窗口即可。
+4. **本地开发目录**：同一套 `install_bundle <绝对路径>` 也适用于你正在改的 checkout；改完源码运行 `node scripts/build.mjs` 生成 `client.js`，刷新 DSH 窗口即可。
 
 安装后需要刷新一次 DSH 窗口，让客户端 bundle 进入启动图；之后的客户端改动支持热加载。
 
