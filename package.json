@@ -1,0 +1,69 @@
+{
+  "name": "dsh-pixel-office",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Pixel-art office for DeepSeek Harness: one fixed-pixel tower where every workspace is a floor and every session is an office, with lit windows, scrolling floors and click-through into any session.",
+  "license": "MIT",
+  "author": "Thunderunruly",
+  "engines": {
+    "dsh": ">=0.2.1-rc.3 <0.3.0-0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thunderunruly/agent-office.git"
+  },
+  "homepage": "https://github.com/Thunderunruly/agent-office#readme",
+  "bugs": {
+    "url": "https://github.com/Thunderunruly/agent-office/issues"
+  },
+  "keywords": [
+    "deepseek",
+    "harness",
+    "dsh",
+    "dsh-plugin",
+    "plugin",
+    "pixel-art",
+    "pixel",
+    "office",
+    "session",
+    "agent-teams",
+    "visualization",
+    "ui"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "screenshots.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "external": [
+        "@deepseek-ai/dsh-client-ui-primitives"
+      ],
+      "inject": [
+        "@deepseek-ai/dsh-api-remotes",
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-api-workspace-controller",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ]
+    }
+  }
+}

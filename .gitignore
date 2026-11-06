@@ -1,0 +1,25 @@
+# Local noise
+node_modules/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Development-only folders (reference art, temp renders, local publish state)
+.ref/
+tmp/
+.tmp/
+*.tgz
+
+# Local publishing/PR scratch data
+.market/
+
+# Internal QA renders
+out6/
+
