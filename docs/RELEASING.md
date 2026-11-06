@@ -64,4 +64,9 @@ install with:
 dsh plugin --profile desktop add dsh-pixel-office
 ```
 
+The first publish of a brand-new name may show a `0.0.0-stage` placeholder for a moment:
+npm publishes through its staged-publishing queue, and the `latest` dist-tag flips to the
+real version once the publish settles (`npm view <name> dist-tags`). npm CLI 11.15+ exposes
+`npm stage list / approve / reject` if a human approval queue is ever required.
+
 Keep `package.json` `repository` pointing at this repository so the catalog can link the two.
