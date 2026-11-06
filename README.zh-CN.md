@@ -101,7 +101,7 @@ node scripts/verify.mjs          # 离线模型 + 场景契约校验
 node scripts/build.mjs           # 生成 client.js（之后刷新 DSH 窗口）
 ```
 
-源码结构与冻结的场景契约见 [docs/SPEC.md](docs/SPEC.md)。
+源码结构与冻结的场景契约见 [docs/SPEC.md](docs/SPEC.md)。发布流程（打 tag、提交插件市场 PR、可选的 npm 发布）见 [docs/RELEASING.md](docs/RELEASING.md)。
 
 ## 声明
 

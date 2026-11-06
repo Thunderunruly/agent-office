@@ -101,7 +101,7 @@ node scripts/verify.mjs          # offline model + scene contract verification
 node scripts/build.mjs           # emit client.js (refresh the DSH window afterwards)
 ```
 
-Source layout and the frozen scene contracts are documented in [docs/SPEC.md](docs/SPEC.md).
+Source layout and the frozen scene contracts are documented in [docs/SPEC.md](docs/SPEC.md). The release checklist (git tag, plugin-market PR, optional npm publish) is in [docs/RELEASING.md](docs/RELEASING.md).
 
 ## Disclaimer
 
