@@ -91,12 +91,20 @@ if (listed) {
   process.exit(0);
 }
 
-// 3. Already an open PR from our branch?
-const openPrs = ghJson([
-  'pr', 'list', '--repo', UPSTREAM,
-  '--head', `${OWNER}:${BRANCH}`, '--state', 'open',
-  '--json', 'url,number',
-]) || [];
+// 3. Already an open PR from our branch? (gh accepts both "branch" and "owner:branch".)
+let openPrs = [];
+for (const head of [BRANCH, `${OWNER}:${BRANCH}`]) {
+  try {
+    openPrs = ghJson([
+      'pr', 'list', '--repo', UPSTREAM,
+      '--head', head, '--state', 'open',
+      '--json', 'url,number',
+    ]) || [];
+  } catch (error) {
+    openPrs = [];
+  }
+  if (openPrs.length > 0) break;
+}
 if (openPrs.length > 0) {
   log(`PR already open: ${openPrs[0].url}`);
   process.exit(0);
@@ -123,20 +131,31 @@ try {
     'commit', '-m', `Add ${OWNER}/${REPO}`, '-m', 'Fixed-pixel office tower for DeepSeek Harness sessions.'], { cwd: workDir });
   log('pushing branch…');
   run('git', ['push', '-u', 'origin', BRANCH, '--force'], { cwd: workDir, inherit: true });
-  const prUrl = run('gh', [
-    'pr', 'create', '--repo', UPSTREAM,
-    '--head', `${OWNER}:${BRANCH}`,
-    '--title', `Add ${OWNER}/${REPO}`,
-    '--body', [
-      `Adds **${OWNER}/${REPO}** to the catalog.`,
-      '',
-      '- Fixed-pixel office tower for DSH: workspaces are floors, sessions are offices, teams are the people inside.',
-      '- Declares `dsh.bundle` in `package.json` and ships a ready `client.js` — installable straight from this repository, no build step.',
-      '- Category `ui` (a visual panel added to the Web UI).',
-      '',
-      `Repository: https://github.com/${OWNER}/${REPO}`,
-    ].join('\n'),
-  ]).trim();
+  let prUrl = '';
+  try {
+    prUrl = run('gh', [
+      'pr', 'create', '--repo', UPSTREAM,
+      '--head', `${OWNER}:${BRANCH}`,
+      '--title', `Add ${OWNER}/${REPO}`,
+      '--body', [
+        `Adds **${OWNER}/${REPO}** to the catalog.`,
+        '',
+        '- Fixed-pixel office tower for DSH: workspaces are floors, sessions are offices, teams are the people inside.',
+        '- Declares `dsh.bundle` in `package.json` and ships a ready `client.js` — installable straight from this repository, no build step.',
+        '- Category `ui` (a visual panel added to the Web UI).',
+        '',
+        `Repository: https://github.com/${OWNER}/${REPO}`,
+      ].join('\n'),
+    ]).trim();
+  } catch (error) {
+    // A PR for this branch may already exist if a previous run was interrupted between
+    // push and create; gh still reports the URL, so treat that as success.
+    const message = `${error.stdout || ''}${error.stderr || ''}`;
+    const existing = message.match(/https:\/\/github\.com\/[^\s"]+\/pull\/\d+/);
+    if (!existing) throw error;
+    prUrl = existing[0];
+    log(`PR already existed: ${prUrl}`);
+  }
   log(`opened PR: ${prUrl}`);
   console.log(prUrl);
 } finally {
