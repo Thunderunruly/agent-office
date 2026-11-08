@@ -43,7 +43,7 @@ Requires DSH **0.2.1-rc.3** or newer with the Web UI and plugin support.
    dsh plugin --profile desktop add dsh-pixel-office
    ```
 
-2. **From the DSH Plugin Market** (after the catalog listing is merged): Plugins → Discover, search **Pixel Office**, install, then refresh the window once.
+2. **From the DSH Plugin Market**: Plugins → Discover, search **Pixel Office**, install, then refresh the window once. Catalog page: <https://awesome-dsh-plugin.com/p/Thunderunruly/agent-office/>.
 3. **From this repository** (source install):
 
    ```sh

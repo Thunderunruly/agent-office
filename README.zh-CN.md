@@ -43,7 +43,7 @@
    dsh plugin --profile desktop add dsh-pixel-office
    ```
 
-2. **从 DSH 插件市场安装**（目录收录合并后）：插件 → 发现（Discover）→ 搜索 **像素办公室 / Pixel Office** → 安装，然后刷新一次窗口。
+2. **从 DSH 插件市场安装**：插件 → 发现（Discover）→ 搜索 **像素办公室 / Pixel Office** → 安装，然后刷新一次窗口。目录页：<https://awesome-dsh-plugin.com/p/Thunderunruly/agent-office/>。
 3. **从本仓库安装**（源码方式）：
 
    ```sh
